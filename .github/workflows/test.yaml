@@ -1,0 +1,38 @@
+name: Test LFS commit pull
+
+on:
+  pull_request_target:
+    # (re)opened PR or new commit in fork
+    types: [ opened, synchronize, reopened ]
+
+jobs:
+  test:
+    name: Test checkout + push
+    # NOTE: on windows as computing of descriptors has a bug on linux right now
+    runs-on: windows-2019
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }} # needed for pulling R packages from github
+
+    steps:
+    - name: Checkout fork repository
+      uses: actions/checkout@v2
+      with:
+         fetch-depth: 0
+         repository: ${{github.event.pull_request.head.repo.full_name}}
+         lfs: true
+
+    - name: Cat file
+      shell: bash {0}
+      run: cat a.txt
+
+    - name: Add file
+      shell: bash {0}
+      run: date > b.txt
+
+    - name: Commit
+      run: |
+        git config --global user.email 'actions@github.com'
+        git config --global user.name 'Github Actions'
+        git add .
+        git commit -m "new test file"
+        git push origin HEAD
