@@ -19,7 +19,7 @@ jobs:
       with:
          fetch-depth: 0
          repository: ${{github.event.pull_request.head.repo.full_name}}
-         lfs: false
+         lfs: true
 
     - name: Cat file
       shell: bash {0}
@@ -38,3 +38,5 @@ jobs:
         
     - name: Push changes
       uses: ad-m/github-push-action@master
+      with:
+          branch: ${{ github.head_ref }}
