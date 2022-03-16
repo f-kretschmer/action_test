@@ -54,3 +54,7 @@ jobs:
         git commit -m "new test file"
         git status
         git push origin HEAD --no-verify
+        
+    - name: Debug with tmate on failure
+      if: ${{ failure() }}
+      uses: mxschmitt/action-tmate@v3
