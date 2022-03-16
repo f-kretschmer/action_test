@@ -43,3 +43,9 @@ jobs:
     - name: Debug with tmate on failure
       if: ${{ failure() }}
       uses: mxschmitt/action-tmate@v3
+      
+    - name: Label 
+      uses: andymckay/labeler@master
+      with:
+        add-labels: "successful"
+        remove-labels: "failed"
