@@ -35,7 +35,7 @@ jobs:
       
     - name: LFS url config
       shell: bash {0}
-      run: git config lfs.url 'https://github.com/f-kretschmer/action_test.git'
+      run: git config lfs.url 'https://github.com/f-kretschmer/action_test.git/info/lfs'
       
     - name: LFS env
       shell: bash {0}
