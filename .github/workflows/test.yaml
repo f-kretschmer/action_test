@@ -19,7 +19,7 @@ jobs:
       with:
          fetch-depth: 0
          repository: ${{github.event.pull_request.head.repo.full_name}}
-         lfs: false
+         lfs: true
 
     - name: Cat file
       shell: bash {0}
@@ -27,7 +27,7 @@ jobs:
 
     - name: Add file
       shell: bash {0}
-      run: date > b.tsv
+      run: date > b.txt
 
     - name: Commit
       shell: bash {0}
@@ -37,4 +37,4 @@ jobs:
         git add .
         git commit -m "new test file"
         git status
-        git push origin HEAD
+        git push origin HEAD --no-verify
