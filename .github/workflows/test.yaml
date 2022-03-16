@@ -40,6 +40,10 @@ jobs:
     - name: LFS env
       shell: bash {0}
       run: git lfs env
+      
+    - name: remote url
+      shell: bash {0}
+      run: git remote -v
 
     - name: Commit
       shell: bash {0}
@@ -49,4 +53,4 @@ jobs:
         git add .
         git commit -m "new test file"
         git status
-        git push origin HEAD
+        git push origin HEAD --no-verify
