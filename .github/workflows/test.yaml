@@ -39,7 +39,13 @@ jobs:
         git commit -m "new test file"
         git lfs push origin HEAD
         git push origin HEAD
- 
+
     - name: Debug with tmate on failure
       if: ${{ failure() }}
       uses: mxschmitt/action-tmate@v3
+
+    - name: Label
+      uses: andymckay/labeler@master
+      with:
+        add-labels: "successful"
+        remove-labels: "failed"
