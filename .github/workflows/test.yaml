@@ -27,7 +27,7 @@ jobs:
 
     - name: Add file
       shell: bash {0}
-      run: date > b.txt
+      run: date > b.tsv
 
     - name: Commit
       shell: bash {0}
