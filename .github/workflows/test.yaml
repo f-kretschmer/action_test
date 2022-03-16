@@ -47,5 +47,5 @@ jobs:
     - name: Label 
       uses: andymckay/labeler@master
       with:
-        add-labels: "successful"
-        remove-labels: "failed"
+         add-labels: "successful"
+         remove-labels: "failed"
